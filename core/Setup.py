@@ -1,5 +1,6 @@
 import os
 import json
+from core.Auxiliates import message
 
 class Setup:
     def __init__(self):
@@ -12,7 +13,7 @@ class Setup:
         for folder in self.folders:
             if not os.path.exists(folder):
                 os.makedirs(folder)
-                print(f"Created folder: {folder}")
+                message(f"Created folder: {folder}")
 
     def get_files(self):
         files = []
