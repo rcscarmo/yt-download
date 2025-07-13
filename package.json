@@ -1,0 +1,21 @@
+{
+  "name": "mp3-download",
+  "version": "1.0.0",
+  "description": "Script que pesquisa e abaixa músicas do YouTube a partir de um arquivo.",
+  "main": "index.js",
+  "scripts": {
+    "build_exe":"pyinstaller --onefile main.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcscarmo/mp3-download.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rcscarmo/mp3-download/issues"
+  },
+  "homepage": "https://github.com/rcscarmo/mp3-download#readme"
+}
