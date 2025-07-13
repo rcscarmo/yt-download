@@ -7,13 +7,13 @@ from datetime import datetime
 # ABRE ARQUIVO DE CONFIGURACAO E CARREGA A CHAVE DA API DO YOUTUBE
 with open("config.json", "r") as f:
     config = json.load(f)
-    KEY = config["YOUTUBE_API_KEY"][0]
+    KEYS = config["YOUTUBE_API_KEY"]
 
 # URL BASE DA API DO YOUTUBE
 URL_BASE = "https://youtube.googleapis.com/youtube/v3/search"
 
 # PARAMETROS DA REQUEST
-params = { "part": "snippet", "maxResults": 1, "type": "video", "key": KEY }
+params = { "part": "snippet", "maxResults": 1, "type": "video", "key": KEYS[0] }
 
 # CABECALHO
 HEADERS = { "User-Agent": "curl/7.81.0" }
@@ -66,11 +66,13 @@ def main():
                 elif response.status_code == 403:
                     with open(os.path.join("logs", f"error_log_{HOJE}.txt"), "a", encoding="utf-8") as log_file:
                         log_file.write(f"Cotas do dia finalizadas.{datetime.now()}\n")
-                        log_file.write(f"Ultimo video baixado: https://www.youtube.com/watch?v={last_video}\n")
+                        log_file.write(f"Ultimo video baixado: {last_video}\n")
+                        log_file.write(f"============================================================\n")
                         exit()
                         
             with open(os.path.join("logs", f"error_log_{HOJE}.txt"), "a", encoding="utf-8") as log_file:
                 log_file.write(f"Download completed for {arquivo} at {datetime.now()}\n")
+                log_file.write(f"============================================================\n")
 
 
 # EXECUTA A FUNCAO PRINCIPAL
