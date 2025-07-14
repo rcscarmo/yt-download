@@ -1,7 +1,6 @@
 import os
 import sys
 import requests
-from datetime import datetime
 from core.Setup import Setup
 from core.Auxiliates import *
 
@@ -30,6 +29,7 @@ class YouTubeDownloader(Setup):
                     pause()
                     sys.exit(0)
 
+                contador = 1
                 for line in lines:
                     query = line.strip()
                     self.params["key"] = self.keys[0]
@@ -39,9 +39,14 @@ class YouTubeDownloader(Setup):
                         data = response.json()
                         if data["items"]:
                             video_id = data["items"][0]["id"]["videoId"]
-                            message(f"Video found for {query}: {video_id}")
+                            message(f"Video {contador}/{len(lines)} found for {query}: {video_id}")
                             self.download_mp3(f"https://www.youtube.com/watch?v={video_id}", arquivo)
                             self.last_video = f"https://www.youtube.com/watch?v={video_id}"
+                            contador += 1
+                            if contador == len(lines) + 1:
+                                message(f"Todos os videos do arquivo {arquivo} foram baixados.")
+                                log_write(f"Todos os videos do arquivo `{arquivo}` foram baixados.", self.file_log)
+                                self.file_log.close()
                     elif response.status_code == 403:
                         error = f"Cotas do dia finalizadas.\n"
                         error += f"Ultimo video que tentou baixar: `{query} - {arquivo.replace("-", " ")}` {self.last_video or  ''}"
