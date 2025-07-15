@@ -14,7 +14,7 @@ Script que pesquisa e abaixa músicas do YouTube a partir de um arquivo.
 
 - Instale as dependências do Python com o comando `pip install -r requirements.txt`
 - Coloque o nome das músicas dentro da pasta `listas` nomeando o arquivo da forma que preferir, ex.: ```paula-fernandes.txt```, ```bruna-karla.txt```, ```xuxa.txt```
-- Renomeei o arquivo `config-default.json` para `config.json` e coloque sua chave da API do YouTube no local indicado
+- Renomeei o arquivo `config-default.json` para `config.json` e coloque suas chaves da API do YouTube no local indicado ```["CHAVE 1", "CHAVE 2", "CHAVE 3"]```
 - Execute o script `main.py`
 - Aguarde o download
 - Será criada uma pasta com o nome escolhido do arquivo dentro da pasta `saida` com as músicas baixadas

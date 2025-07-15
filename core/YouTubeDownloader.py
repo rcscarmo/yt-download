@@ -30,9 +30,10 @@ class YouTubeDownloader(Setup):
                     sys.exit(0)
 
                 contador = 1
+                key_atual = 0
                 for line in lines:
                     query = line.strip()
-                    self.params["key"] = self.keys[0]
+                    self.params["key"] = self.keys[key_atual]
                     self.params["q"] = f"{query} - {arquivo}"
                     response = requests.get(self.url_base, params=self.params, headers=self.headers)
                     if response.status_code == 200:
@@ -48,10 +49,16 @@ class YouTubeDownloader(Setup):
                                 log_write(f"Todos os videos do arquivo `{arquivo}` foram baixados.", self.file_log)
                                 self.file_log.close()
                     elif response.status_code == 403:
-                        error = f"Cotas do dia finalizadas.\n"
-                        error += f"Ultimo video que tentou baixar: `{query} - {arquivo.replace("-", " ")}` {self.last_video or  ''}"
-                        message(f"{error}".upper())
+                        error = f"Cotas do dia para key `{self.keys[key_atual]}` finalizadas.\n"
+                        error += f"Tentiva falha de baixar video: `{query} - {arquivo.replace("-", " ")}` {self.last_video or  ''}"
+                        message(f"{error}")
                         log_write(error, self.file_log)
                         self.file_log.close()
-                        pause()
-                        sys.exit(0)
+                        if contador != (len(self.keys) - 1):
+                            key_atual += 1
+                        else:
+                            error = f"Todas as keys utilizadas.\n"
+                            message(error)
+                            log_write(error, self.file_log)
+                            pause()
+                            sys.exit(0)
