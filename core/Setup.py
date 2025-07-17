@@ -18,7 +18,7 @@ class Setup:
         self.file_log = open(os.path.join("logs", f"error_log_{self.hoje}.txt"), "a", encoding="utf-8")
 
     def setup_folders(self):
-        folders = ["saida", "listas", "logs"]
+        folders = ["saida", "listas", "finalizados", "logs"]
         for folder in folders:
             if not os.path.exists(folder):
                 os.makedirs(folder)

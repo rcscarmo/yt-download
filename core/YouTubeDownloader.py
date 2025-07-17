@@ -47,13 +47,13 @@ class YouTubeDownloader(Setup):
                             if contador == len(lines) + 1:
                                 message(f"Todos os videos do arquivo {arquivo} foram baixados.")
                                 log_write(f"Todos os videos do arquivo `{arquivo}` foram baixados.", self.file_log)
+                                move_arquivo(arquivo)
                                 self.file_log.close()
                     elif response.status_code == 403:
                         error = f"Cotas do dia para key `{self.keys[key_atual]}` finalizadas.\n"
                         error += f"Tentiva falha de baixar video: `{query} - {arquivo.replace("-", " ")}` {self.last_video or  ''}"
                         message(f"{error}")
                         log_write(error, self.file_log)
-                        self.file_log.close()
                         if contador != (len(self.keys) - 1):
                             key_atual += 1
                         else:
