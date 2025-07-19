@@ -12,6 +12,4 @@ def message(msg):
 def log_write(msg, file):
     file.write(f"{msg} - {datetime.now()}\n".upper())
     file.write(f"============================================================\n")
-
-def move_arquivo(arquivo):
-    os.rename(os.path.join("listas", arquivo), os.path.join("finalizados", arquivo))
+    
