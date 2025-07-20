@@ -25,7 +25,9 @@ class Setup:
                 message(f"Created folder: {folder}")
 
     def get_files(self):
-        return os.listdir(os.path.join(self.base_dir, "listas"))
+        arquivos = os.listdir(os.path.join(self.base_dir, "listas"))
+        arquivos = [f for f in arquivos if f.endswith('.txt')]
+        return arquivos
 
     def load_api_keys(self):
         with open("config.json", "r") as f:
