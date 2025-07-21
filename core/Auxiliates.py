@@ -1,8 +1,9 @@
-import os
+import sys
 from datetime import datetime
 
 def pause():
     input("Pressione Enter para continuar...")
+    sys.exit(0)
 
 def message(msg):
     print(60 * "=")

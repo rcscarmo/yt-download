@@ -27,7 +27,6 @@ class YouTubeDownloader(Setup):
                     log_write(f"Nenhum item conteúdo encontrado no arquivo `{arquivo}`", self.file_log)
                     self.file_log.close()
                     pause()
-                    sys.exit(0)
 
                 contador = 1
                 key_atual = 0
@@ -60,4 +59,3 @@ class YouTubeDownloader(Setup):
                             message(error)
                             log_write(error, self.file_log)
                             pause()
-                            sys.exit(0)

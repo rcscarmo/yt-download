@@ -7,13 +7,16 @@ from core.Auxiliates import *
 class Setup:
     def __init__(self):
         self.base_dir = os.path.dirname(os.path.abspath(os.path.basename(__file__)))
+        
         self.setup_folders()
         self.keys = self.load_api_keys()
         self.files = self.get_files()
         self.verificacoes()
+        
         self.url_base = "https://youtube.googleapis.com/youtube/v3/search"
         self.params = {"part": "snippet", "maxResults": 1, "type": "video"}
         self.headers = {"User-Agent": "curl/7.81.0"}
+
         self.hoje = datetime.today().strftime("%Y-%m-%d")
         self.file_log = open(os.path.join("logs", f"error_log_{self.hoje}.txt"), "a", encoding="utf-8")
 
@@ -40,14 +43,11 @@ class Setup:
         except subprocess.CalledProcessError as e:
             message(f"FFmpeg: Nao instalado ou nao encontrado. Instale o FFmpeg e tente novamente.")
             pause()
-            sys.exit(0)
 
         if self.keys == []:
-            message("YouTube API key not found in config.json. Please add it.".upper())
+            message("YouTube API key nao foram encontrados em config.json.".upper())
             pause()
-            sys.exit(0)
         
         if self.files == []:
             message("No files found in the 'listas' folder.".upper())
             pause()
-            sys.exit(0)
