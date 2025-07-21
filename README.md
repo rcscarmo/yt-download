@@ -1,7 +1,6 @@
 # Mp3 Download
 Script que pesquisa e abaixa músicas do YouTube a partir de um arquivo.
 
-
 # Instruções
 - Instale o software `FFMPEG` em seu sistemas [Download do FFMPEG](https://ffmpeg.org/download.html)
 - Crie um ambiente de desenvolvimento ```python -m venv .venv```
@@ -14,7 +13,16 @@ Script que pesquisa e abaixa músicas do YouTube a partir de um arquivo.
 
 - Instale as dependências do Python com o comando `pip install -r requirements.txt`
 - Coloque o nome das músicas dentro da pasta `listas` nomeando o arquivo da forma que preferir, ex.: ```paula-fernandes.txt```, ```bruna-karla.txt```, ```xuxa.txt```
+- Exemplo de arquivo
+  ```
+  pompeia
+  dois patinhos
+  rap da akatsuki
+  a igreja vem
+  ...
+  ```
 - Renomeei o arquivo `config-default.json` para `config.json` e coloque suas chaves da API do YouTube no local indicado ```["CHAVE 1", "CHAVE 2", "CHAVE 3"]```
+- Tuturial para conseguir uma chave [Video Tutorial](https://youtu.be/5mA4fg2ntHY)
 - Execute o script `main.py`
 - Aguarde o download
 - Será criada uma pasta com o nome escolhido do arquivo dentro da pasta `saida` com as músicas baixadas
