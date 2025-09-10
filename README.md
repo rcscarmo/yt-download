@@ -1,4 +1,4 @@
-# Mp3 Download
+# Video / Audio Download
 Script que pesquisa e abaixa músicas do YouTube a partir de um arquivo.
 
 # Instruções
